@@ -4,15 +4,13 @@ const firebase = require('firebase');
 const router = express.Router();
 const path = require('path');
 const { append } = require('vary');
-
-var Auth = firebase.auth();
-
+checkuser()
+async function checkuser(){
+var Auth = await firebase.auth();
 console.log(Auth.currentUser);
+}
 
 
-router.post('/docterDetails', (req, res) => {
-    console.log(req.body)
-})
 
 
 
@@ -99,7 +97,7 @@ starCountRef.on('value', (snapshot) => {
             console.log("No data available");
             obj1 = new Blockchain();
             obj1.createBlock();
-            firebase.database().ref('user').set({
+            firebase.database().ref('user').push({
                 bc: obj1.chain
             });
         }
@@ -114,10 +112,9 @@ starCountRef.on('value', (snapshot) => {
 router.get('/addreport', (req, res) => {
     console.log("Adding block 6");
     obj1.addBlock(new Block("01/01/2027", { amount: 56 }))
-    firebase.database().ref('user').set({
+    firebase.database().ref('user').push({
         bc: obj1.chain
     });
 });
-
-
+console.log()
 module.exports = router;
