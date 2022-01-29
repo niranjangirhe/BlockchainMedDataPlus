@@ -45,11 +45,11 @@ app.get('/addreport',(req,res)=>{
 app.get('/Doctordetail',(req,res)=>{
     res.render('Doctdetail')
 })
-const port = process.env.PORT || 4000
+
 app.get('/reset',(req,res)=>{
     res.render('reset')
 })
 
 
-const port = process.env.PORT || 4003
+const port = process.env.PORT || 4001
 app.listen(port, () => console.log("Server is Running...",port));
