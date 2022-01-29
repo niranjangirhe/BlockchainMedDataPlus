@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses Setting</title>
+  <link rel="icon" href="/assets/favicon/course.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/addreport.css">
+
+</head>
+<!-- nav -->
+
+<body>
+  <ul class="top-nav">
+    <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
+    <h4 class="center">Courses Setting</h4>
+  </ul>
+
+  <!-- sidenav -->
+  <ul id="slide-out" class="sidenav blue darken-2">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img id="test" src="/assets/bg.jpg">
+        </div>
+        <a href="#user"><img class="circle" src="/assets/user.png"></a>
+        <a href="#name"><span class="black-text name" id="navname"><b>Admin</b></span></a>
+        <a href="#email"><span class="black-text email" id="navemail">admin@admin.com</span></a>
+      </div>
+    </li>
+
+    <li><a href="/admin/adminhomepage.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">schedule</i>Schedule</a></li>
+    <li><a href="/admin/courses.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">book</i>Courses Setting</a></li>
+    <li><a href="/admin/allocation.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">check_box</i>Allocation</a></li>
+    <li><a href="/admin/studdata.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">data_usage</i>Student Data</a></li>
+    <li><a href="/admin/adminsettings.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">settings</i>Admin Settings</a></li>
+    <li>
+      <div class="divider white-text"></div>
+    </li>
+    <li><a class="waves-effect waves-light btn black-text white" id="studlogout" onclick="logout()">Logout</a></li>
+  </ul>
+
+  <div class="grid">
+    <!-- Add or Edit New Course -->
+    <div id="course-input">
+      <h6>Patient Details</h6>
+      <div class="input-field col s6">
+        <input id="cname" type="text" class="validate">
+        <label for="cname">Full Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="cno" type="number" class="validate">
+        <label for="cno">Email ID</label>
+      </div>
+      
+      <h6>Report Type</h6>
+      <select id="schooldd" class="input-field col s12" onchange="ddchanged()">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Blood</option>
+        <option value="2">Urine</option>
+        <option value="3">Sugar</option>
+        <option value="4">Blood Pressure</option>
+      </select>
+      <a class="waves-effect waves-light btn blue darken-2" id="addcourse" onclick="addcourse()">Save Changes</a>
+    </div>
+
+
+    <!-- Edit Course -->
+    <div id="edit">
+      <div id="editdel">
+        <h6>Edit Course</h6>
+        <div class="input-field col s6 center">
+          <input type="number" id="cedit">
+          <label for="cedit">Enter Course No</label>
+          <a class="waves-effect waves-light btn blue darken-2" id="editcourse" onclick="editcourse()">Edit</a>
+        </div>
+        <h6>Delete Course</h6>
+        <div class="input-field col s6 center">
+          <input type="number" id="cdelete">
+          <label for="cdelete">Enter Course No</label>
+          <a class="waves-effect waves-light btn blue darken-2" id="deletecourse" onclick="deletecourse()">Delete</a>
+        </div>
+        <!-- progress bar for all process -->
+        <div class="progress blue lighten-4" id="cprogress">
+          <div class="indeterminate blue darken-2"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Course Table -->
+
+    <div id="ctable">
+      <table id="courset" class="centered striped">
+        <thead>
+          <tr>
+            <th>Course No</th>
+            <th>Course Name</th>
+            <th>Internal Capacity</th>
+            <th>External Capacity</th>
+            <th>Course School</th>
+            <th>Open To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="padding"></div>
+  </div>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- side nav script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+    });
+  </script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-firestore.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyD9BHz-HTQl518KmUr1GHHx0IXJGj7bJP8",
+      authDomain: "openelectiveallocation.firebaseapp.com",
+      projectId: "openelectiveallocation",
+      storageBucket: "openelectiveallocation.appspot.com",
+      messagingSenderId: "953116708866",
+      appId: "1:953116708866:web:69c0de0ba08dda4efc971b"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  <script src="/scripts/adminconsole.js"></script>
+  <script src="/scripts/courses.js"></script>
+</body>
+
+</html>
