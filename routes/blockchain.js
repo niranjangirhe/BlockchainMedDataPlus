@@ -109,12 +109,12 @@ starCountRef.on('value', (snapshot) => {
 
 
 
-router.get('/addreport', (req, res) => {
-    console.log("Adding block 6");
+router.get('/appendreport', (req, res) => {
+    console.log("Adding block");
     obj1.addBlock(new Block("01/01/2027", { amount: 56 }))
-    firebase.database().ref('user').push({
-        bc: obj1.chain
-    });
+    firebase.database().ref("user/bc").set(
+       obj1.chain
+    );
 });
 console.log()
 module.exports = router;
