@@ -24,15 +24,25 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
-    
-    firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password).then(() => {
-        res.redirect('/login');
-    }).catch((error) => {
-        res.send(error.message);
-    });
+    if(req.body.password === req.body.cpassword){
+        firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password).then(() => {
+            res.redirect('/login');
+        }).catch((error) => {
+            res.send(error.message);
+        });
+    }else{
+        console.log('Passwords do not match');
+    }   
 });
 
-router.get('/reset',(req,res)=>{
+router.post('/reset',(req,res)=>{
+    //reset password
+    firebase.auth().sendPasswordResetEmail(req.body.email).then(()=>{
+        res.redirect('/login');
+    }).catch((error)=>{
+        res.send(error.message);
+    })
+    console.log("Email sent");
     
 })
 
