@@ -10,6 +10,9 @@ var Auth = firebase.auth();
 console.log(Auth.currentUser);
 
 
+router.post('/docterDetails', (req, res) => {
+    console.log(req.body)
+})
 
 
 

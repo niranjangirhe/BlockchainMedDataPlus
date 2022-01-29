@@ -29,25 +29,25 @@
             </span>
           
             <div class="card-content">
-                <form>
+                <form action="/docterDetails" method="post">
                     <div class="input-field col s6" style="margin-top: 10px;">
-                        <input id="lisenceid" type="text" style="margin-bottom: 0px;">
+                        <input id="lisenceid" name="lisenceid" type="text" style="margin-bottom: 0px;">
                         <label for="dcspeciality">Enter Lisence ID</label>
                     </div>
                     <div class="input-field col s6" style="margin-top: 10px;">
-                        <input id="dcname" type="text"  style="margin-bottom: 0px;">
+                        <input id="dcname" type="text" name="dcname"  style="margin-bottom: 0px;">
                         <label for="dcspeciality">Enter Name</label>
                     </div>
                     <div class="input-field col s6" style="margin-top: 10px;">
-                        <input id="dcspeciality" type="text"  style="margin-bottom: 0px;">
+                        <input id="dcspeciality" name="dcspeciality" type="text"  style="margin-bottom: 0px;">
                         <label for="dcspeciality">Enter Speciality</label>
                     </div>
                    
                    
                     
                     <div class="center">
-                        <a class="waves-effect waves-light btn blue darken-2" id="signinbtn"
-                            onclick="signup(event)">Submit</a>
+                        <button type="submit" class="waves-effect waves-light btn blue darken-2" id="signinbtn"
+                           >Submit</button>
                     </div>
                 </form>
             </div>
