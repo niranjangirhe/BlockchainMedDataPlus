@@ -59,6 +59,18 @@ label {
     padding-left: 10px;
     border: 2px solid #1d72bc;
 }
+#lisenceid{
+    padding-left: 10px;
+    border: 2px solid #1d72bc;
+}
+#dcname{
+    padding-left: 10px;
+    border: 2px solid #1d72bc;
+}
+#dcspeciality{
+    padding-left: 10px;
+    border: 2px solid #1d72bc;
+}
 
 #loginemail {
     padding-left: 10px;

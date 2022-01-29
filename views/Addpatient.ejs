@@ -28,25 +28,11 @@
                 <div class="background">
                     <img id="test" src="/assets/bg.jpg">
                 </div>
-                <a href="#user"><img class="circle" src="/assets/user.png"></a>
-                <a href="#name"><span class="black-text name" id="navname"><b>Admin</b></span></a>
-                <a href="#email"><span class="black-text email" id="navemail">admin@admin.com</span></a>
+                <a href="/Addpatient"><span class="black-text name" id="navname"><b>Add Patient</b></span></a>
+                <a href="/addreport"><span class="black-text email" id="navemail">Add Report</span></a>
             </div>
         </li>
 
-        <li><a href="/admin/adminhomepage.html" class="waves-effect waves-light white-text"><i
-                    class="material-icons white-text">schedule</i>Schedule</a></li>
-        <li><a href="/admin/courses.html" class="waves-effect waves-light white-text"><i
-                    class="material-icons white-text">book</i>Courses Setting</a></li>
-        <li><a href="/admin/allocation.html" class="waves-effect waves-light white-text"><i
-                    class="material-icons white-text">check_box</i>Allocation</a></li>
-        <li><a href="/admin/studdata.html" class="waves-effect waves-light white-text"><i
-                    class="material-icons white-text">data_usage</i>Student Data</a></li>
-        <li><a href="/admin/adminsettings.html" class="waves-effect waves-light white-text"><i
-                    class="material-icons white-text">settings</i>Admin Settings</a></li>
-        <li>
-            <div class="divider white-text"></div>
-        </li>
         <li><a class="waves-effect waves-light btn black-text white" id="studlogout" onclick="logout()">Logout</a></li>
     </ul>
 
@@ -56,20 +42,20 @@
             <h6>Patient Details</h6>
             <form action="patientDetails" method="post">
                 <div class="input-field col s6">
-                    <input id="pname" name="pname1" type="text" class="validate">
+                    <input id="pname" name="pname1" type="text" class="validate" required>
                     <label for="pname">Fullname</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="pdb" name="pdb1" type="date" class="validate">
+                    <input id="pdb" name="pdb1" type="date" class="validate" required>
                     <label for="pdb">Date of Birth</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="phno" name="phno1" type="number" class="validate">
+                    <input id="phno" name="phno1" type="number" class="validate" required>
                     <label for="phno">Phone No</label>
                 </div>
                 <div class="input-field col s6">
                    
-                    <select id="gender" name="gender1" class="input-field col s12">
+                    <select id="gender" name="gender1" class="input-field col s12" required>
                         <option value="" disabled selected>Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -78,15 +64,15 @@
                     </select>
                 </div>
                 <div class="input-field col s6">
-                    <input id="paddr" name="paddr1" type="text" class="validate">
+                    <input id="paddr" name="paddr1" type="text" class="validate" required>
                     <label for="paddr">Address</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="padhar" name="padhar1" type="number" class="validate">
+                    <input id="padhar" name="padhar1" type="number" class="validate" required>
                     <label for="padhar">Adhar Card</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="pmedhis" name="pmedhis1" type="text" class="validate">
+                    <input id="pmedhis" name="pmedhis1" type="text" class="validate" required>
                     <label for="pmedhis">Medical History</label>
                 </div>
 
