@@ -111,39 +111,54 @@ router.post('/reset', (req, res) => {
 router.post('/docterDetails', (req, res) => {
     //update data to firebase
     const user = firebase.auth().currentUser;
-
+    // const dbRef = firebase.database().ref();
+    // var mostViewedPosts = dbRef.child("user/Patients").orderByChild('PhoneNo').equalTo("7768989938");
+    // mostViewedPosts.get().then((snapshot) => {
+    //     if (snapshot.exists()) {
+    //         console.log(snapshot.val());
+    //         //res.redirect("/addreport")
+    //     } else {
+    //         console.log("No Patients data");
+    //         //res.redirect("/Addpatient")
+    //     }
+    // }).catch((error) => {
+    //     console.error(error);
+    // });
     if (user) {
         firebase.database().ref('user/Doctors').child(user.uid).set({
 
             LicId: req.body.lisenceid,
             DocName: req.body.dcname,
-            DcSpecaility: req.body.dcspeciality
-        }).then(()=>{
+            DcSpecaility: req.body.dcspeciality,
+            uid: user.uid,
+            email: user.email
+        }).then(() => {
             res.redirect('/addreport');
-        }).catch((error)=>{
+        }).catch((error) => {
             res.send(error.message);
         })
-    }else{
+    } else {
         res.send("No user found");
     }
 })
 
 router.post('/patientdetails', (req, res) => {
 
-    let UID = firebase.auth().currentUser.uid;
-    console.log("UID: " + UID);
-    firebase.database().ref('user/Patients').child(UID).set({
+    let user = firebase.auth().currentUser;
+    console.log("UID: " + user.uid);
+    firebase.database().ref('user/Patients').child(user.uid).set({
         Name: req.body.pname1,
         DOB: req.body.pdb1,
         PhoneNo: req.body.phno1,
         Gender: req.body.gender1,
         Address: req.body.paddr1,
         AdharNo: req.body.padhar1,
-        Med_history: req.body.pmedhis1
-
-    }).then(()=>{
+        Med_history: req.body.pmedhis1,
+        uid: user.uid,
+        email: user.email
+    }).then(() => {
         res.redirect('/addreport');
-    }).catch((error)=>{
+    }).catch((error) => {
         res.send("No user found");
     })
 })
