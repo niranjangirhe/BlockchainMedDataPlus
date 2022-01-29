@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <!-- <link rel="icon" href="/assets/favicon/index.png" type="image/gif"> -->
+</head>
+
+<body>
+
+    <div class="home-overlay"></div>
+    <h3 class="center">Welcome to -- Portal</h3>
+    <main class="login-card">
+        <div class="card white">
+            <span class="card-title center">
+                <h4>Login</h4>
+            </span>
+            <div class="center"><img id="clglogo" src="/assets/logo.png" alt="MedDataPlus Logo"></div>
+            <div class="card-content">
+                <form>
+                    <div>
+                        <input id="loginemail" type="email" placeholder="Email ID" style="margin-bottom: 0px;">
+                        <small>Enter Email-ID</small>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <input id="loginpassword" type="password" placeholder="Password" style="margin-bottom: 0px;">
+                        <small>Enter Password</small>
+                    </div>
+                    <div id="bottom-text" class="center">
+                        <a href="reset.html" target="_blank">Forgot Password</a>
+                    </div>
+                    <div class="center">
+                        <a href="signup.html">Sign Up</a>
+                    </div>
+                    <div id="breathing-button" class="center"><a href="/instructions.html" target="_blank"><i
+                                class="material-icons">info</i></a></div>
+                    <div class="center">
+                        <a class="waves-effect waves-light btn blue darken-2" id="login"
+                            onclick="login(event)">Login</a>
+                    </div>
+                </form>
+            </div>
+            <div class="progress blue lighten-4" id="loginprogress">
+                <div class="indeterminate blue darken-2"></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="fixed-action-btn toolbar">
+        <a class="btn-floating btn-large blue darken-2 ">
+            <i class="large material-icons">help</i>
+        </a>
+        <ul>
+            <li><a class="btn-floating">Developed By</a></li>
+            <li><a href="#" target="_blank" class="btn-floating">Mayur Ghodekar</a></li>
+            <li><a href="#" target="_blank" class="btn-floating ">Niranjan Girhe</a></li>
+            <li><a href="#" target="_blank" class="btn-floating">Pradyumna Gayake</a></li>
+            <li><a href="#" target="_blank" class="btn-floating ">Anuj Barave</a></li>
+            <li><a href="#" target="_blank" class="btn-floating "><i class="material-icons">help</i>Help</a></li>
+        </ul>
+    </div>
+
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--Firebase Connection-->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                toolbarEnabled: true
+            });
+        });
+    </script>
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB6i_CTLfQh3vpBwV59sHxASXKSAf9wwB4",
+            authDomain: "med-data-plus.firebaseapp.com",
+            projectId: "med-data-plus",
+            storageBucket: "med-data-plus.appspot.com",
+            messagingSenderId: "772756370856",
+            appId: "1:772756370856:web:b69242c1dc4e9f66ba599d"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="scripts/auth.js"></script>
+</body>
+
+</html>
