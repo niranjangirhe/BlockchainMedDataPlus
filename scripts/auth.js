@@ -14,7 +14,6 @@ async function signup(e) {
         progress.style.visibility = "visible";
         btn.style.visibility = "hidden";
         const result = await Auth.createUserWithEmailAndPassword(email.value, password.value)
-        sendVerificationEmail()
         // await result.user.updateProfile({
         //     displayName: "User",
         //     photoURL: PRN.value
@@ -36,6 +35,7 @@ async function signup(e) {
         btn.style.visibility = "visible";
         window.alert("Signup successful.\nPlease check your inbox to verify your email id")
         window.location.href = "/login.html";
+        sendVerificationEmail()
     }
     catch (err) {
         if (err.code == "auth/email-already-in-use") {
