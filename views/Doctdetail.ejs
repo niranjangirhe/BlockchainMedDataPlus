@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <!-- <link rel="icon" href="/assets/favicon/index.png" type="image/gif"> -->
+</head>
+
+<body>
+
+    <style>
+        [type="checkbox"]:checked+span:not(.lever):before {
+            border-right: 2px solid #1976D2;
+            border-bottom: 2px solid #1976D2;
+        }
+    </style>
+    <div class="home-overlay"></div>
+    <h3 class="center">Welcome to MedData</h3>
+    <main class="login-card">
+        <div class="card white">
+            <span class="card-title center">
+                <h4>Enter Doctor Detail</h4>
+            </span>
+          
+            <div class="card-content">
+                <form>
+                    <div class="input-field col s6" style="margin-top: 10px;">
+                        <input id="lisenceid" type="text" style="margin-bottom: 0px;">
+                        <label for="dcspeciality">Enter Lisence ID</label>
+                    </div>
+                    <div class="input-field col s6" style="margin-top: 10px;">
+                        <input id="dcname" type="text"  style="margin-bottom: 0px;">
+                        <label for="dcspeciality">Enter Name</label>
+                    </div>
+                    <div class="input-field col s6" style="margin-top: 10px;">
+                        <input id="dcspeciality" type="text"  style="margin-bottom: 0px;">
+                        <label for="dcspeciality">Enter Speciality</label>
+                    </div>
+                   
+                   
+                    
+                    <div class="center">
+                        <a class="waves-effect waves-light btn blue darken-2" id="signinbtn"
+                            onclick="signup(event)">Submit</a>
+                    </div>
+                </form>
+            </div>
+            <div class="progress blue lighten-4" id="loginprogress">
+                <div class="indeterminate blue darken-2"></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="fixed-action-btn toolbar">
+        <a class="btn-floating btn-large blue darken-2 ">
+            <i class="large material-icons">help</i>
+        </a>
+        <ul>
+            <li><a class="btn-floating">Developed By</a></li>
+            <li><a href="#" target="_blank" class="btn-floating">Mayur Ghodekar</a></li>
+            <li><a href="#" target="_blank" class="btn-floating ">Niranjan Girhe</a></li>
+            <li><a href="#" target="_blank" class="btn-floating">Pradyumna Gayake</a></li>
+            <li><a href="#" target="_blank" class="btn-floating ">Anuj Barave</a></li>
+            <li><a href="#" target="_blank" class="btn-floating "><i class="material-icons">help</i>Help</a></li>
+        </ul>
+    </div>
+
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--Firebase Connection-->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                toolbarEnabled: true
+            });
+        });
+    </script>
+
+</body>
+
+</html>

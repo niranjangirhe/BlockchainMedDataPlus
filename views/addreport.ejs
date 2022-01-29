@@ -18,7 +18,7 @@
 <body>
   <ul class="top-nav">
     <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
-    <h4 class="center">Courses Setting</h4>
+    <h4 class="center">Add Report</h4>
   </ul>
 
   <!-- sidenav -->
@@ -62,36 +62,101 @@
         <input id="cno" type="number" class="validate">
         <label for="cno">Email ID</label>
       </div>
-      
+      <div class="input-field col s6">
       <h6>Report Type</h6>
-      <select id="schooldd" class="input-field col s12" onchange="ddchanged()">
+      <select id="schooldd" class="input-field col s12" onchange="myFunction()">
         <option value="" disabled selected>Choose your option</option>
         <option value="1">Blood</option>
         <option value="2">Urine</option>
         <option value="3">Sugar</option>
         <option value="4">Blood Pressure</option>
       </select>
-      <a class="waves-effect waves-light btn blue darken-2" id="addcourse" onclick="addcourse()">Save Changes</a>
+    </div>
+    <div id="Blood" style="display: none;">
+      <div class="input-field col s6">
+        <input id="u1" type="number" class="validate" >
+        <label for="u1">Hemoglobin</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="u2" type="number" class="validate">
+        <label for="u2">RBC count</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="u3" type="number" class="validate">
+        <label for="u3">WBC Cells</label>
+      </div>
+    </div>
+    <div id="Urine" style="display: none;">
+      <div class="input-field col s6">
+        <input id="u1" type="number" class="validate" >
+        <label for="u1">Puscss Cells</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="u2" type="number" class="validate">
+        <label for="u2">RBC count</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="u3" type="number" class="validate">
+        <label for="u3">Epithelial Cells</label>
+      </div>
+    </div>
+
+    <div id="Sugar" style="display: none;">
+      <div class="input-field col s6">
+        <input id="u1" type="number" class="validate" >
+        <label for="u1">Sugar Cells</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="u2" type="number" class="validate">
+        <label for="u2">RBC count</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="u3" type="number" class="validate">
+        <label for="u3">Epithelial Cells</label>
+      </div>
+    </div>
+
+    <div id="BP" style="display: none;">
+      <div class="input-field col s6">
+        <input id="u1" type="number" class="validate" >
+        <label for="u1">BP Cells</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="u2" type="number" class="validate">
+        <label for="u2">RBC count</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="u3" type="number" class="validate">
+        <label for="u3">Epithelial Cells</label>
+      </div>
+    </div>
+     
+
+
+
+      <a class="waves-effect waves-light btn blue darken-2" id="addcourse" onclick="addcourse()">Submit</a>
     </div>
 
 
     <!-- Edit Course -->
     <div id="edit">
       <div id="editdel">
-        <h6>Edit Course</h6>
+        <h6>Enter Email-ID</h6>
         <div class="input-field col s6 center">
           <input type="number" id="cedit">
-          <label for="cedit">Enter Course No</label>
-          <a class="waves-effect waves-light btn blue darken-2" id="editcourse" onclick="editcourse()">Edit</a>
+          <label for="cedit">Enter here</label>
+          <a class="waves-effect waves-light btn blue darken-2" id="editcourse" onclick="opt()">Submit</a>
         </div>
-        <h6>Delete Course</h6>
+        <p id="msg" style="display: none;color: red;">OTP has been sent</p>
+        <div id="opt" style="display: none;">
         <div class="input-field col s6 center">
           <input type="number" id="cdelete">
-          <label for="cdelete">Enter Course No</label>
-          <a class="waves-effect waves-light btn blue darken-2" id="deletecourse" onclick="deletecourse()">Delete</a>
+          <label for="cdelete">Enter OTP</label>
+          <a class="waves-effect waves-light btn blue darken-2" id="" onclick="deletecourse()">Get Report</a>
         </div>
+      </div>
         <!-- progress bar for all process -->
-        <div class="progress blue lighten-4" id="cprogress">
+        <div class="progress blue lighten-4" id="cprogress" style="display: none;">
           <div class="indeterminate blue darken-2"></div>
         </div>
       </div>
@@ -104,12 +169,11 @@
       <table id="courset" class="centered striped">
         <thead>
           <tr>
-            <th>Course No</th>
-            <th>Course Name</th>
-            <th>Internal Capacity</th>
-            <th>External Capacity</th>
-            <th>Course School</th>
-            <th>Open To</th>
+            <th>Report No</th>
+            <th>Patient Name</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Open View</th>
           </tr>
         </thead>
         <tbody>
@@ -133,6 +197,41 @@
 
   <!-- side nav script -->
   <script>
+   function myFunction() {
+  var x = document.getElementById("schooldd").value;
+    if(x=='1')
+    {
+      document.getElementById("Blood").style.display = "block"; 
+      document.getElementById("Urine").style.display = "none"; 
+      document.getElementById("Sugar").style.display = "none"; 
+      document.getElementById("BP").style.display = "none"; 
+    }
+    else if(x=='2')
+    {
+      document.getElementById("Blood").style.display = "none"; 
+      document.getElementById("Urine").style.display = "block"; 
+      document.getElementById("Sugar").style.display = "none"; 
+      document.getElementById("BP").style.display = "none"; 
+    }
+    else if(x=='3')
+    {
+      document.getElementById("Blood").style.display = "none"; 
+      document.getElementById("Urine").style.display = "none"; 
+      document.getElementById("Sugar").style.display = "block"; 
+      document.getElementById("BP").style.display = "none"; 
+    }
+    else if(x=='4')
+    {
+      document.getElementById("Blood").style.display = "none"; 
+      document.getElementById("Urine").style.display = "none"; 
+      document.getElementById("Sugar").style.display = "none"; 
+      document.getElementById("BP").style.display = "block"; 
+    }
+}
+function opt(){
+  document.getElementById("opt").style.display = "block"; 
+  document.getElementById("msg").style.display = "block"; 
+}
     document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('.sidenav');
       var instances = M.Sidenav.init(elems);
@@ -151,22 +250,9 @@
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyD9BHz-HTQl518KmUr1GHHx0IXJGj7bJP8",
-      authDomain: "openelectiveallocation.firebaseapp.com",
-      projectId: "openelectiveallocation",
-      storageBucket: "openelectiveallocation.appspot.com",
-      messagingSenderId: "953116708866",
-      appId: "1:953116708866:web:69c0de0ba08dda4efc971b"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-  </script>
+
   <script src="/scripts/adminconsole.js"></script>
-  <script src="/scripts/courses.js"></script>
+  <script src="/scripts/addreport.js"></script>
 </body>
 
 </html>
