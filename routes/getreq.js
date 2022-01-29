@@ -35,10 +35,20 @@ router.post('/login', (req, res) => {
                 }).catch((error) => {
                     console.error(error);
                 });
-                // res.redirect("/Doctordetail")
             }
             else {
-                res.redirect("/Addpatient")
+                const dbRef = firebase.database().ref();
+                dbRef.child("user").child("Patients").child(user.uid).get().then((snapshot) => {
+                    if (snapshot.exists()) {
+                        console.log("Patient data");
+                        res.redirect("/addreport")
+                    } else {
+                        console.log("No Patients data");
+                        res.redirect("/Addpatient")
+                    }
+                }).catch((error) => {
+                    console.error(error);
+                });
             }
         }
     }).catch((error) => {
@@ -108,7 +118,11 @@ router.post('/docterDetails', (req, res) => {
             LicId: req.body.lisenceid,
             DocName: req.body.dcname,
             DcSpecaility: req.body.dcspeciality
-        });
+        }).then(()=>{
+            res.redirect('/addreport');
+        }).catch((error)=>{
+            res.send(error.message);
+        })
     }else{
         res.send("No user found");
     }
@@ -118,7 +132,7 @@ router.post('/patientdetails', (req, res) => {
 
     let UID = firebase.auth().currentUser.uid;
     console.log("UID: " + UID);
-    firebase.database().ref('user/Patient').child(UID).set({
+    firebase.database().ref('user/Patients').child(UID).set({
         Name: req.body.pname1,
         DOB: req.body.pdb1,
         PhoneNo: req.body.phno1,
@@ -127,6 +141,10 @@ router.post('/patientdetails', (req, res) => {
         AdharNo: req.body.padhar1,
         Med_history: req.body.pmedhis1
 
-    });
+    }).then(()=>{
+        res.redirect('/addreport');
+    }).catch((error)=>{
+        res.send("No user found");
+    })
 })
 module.exports = router;
