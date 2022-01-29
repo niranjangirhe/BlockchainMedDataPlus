@@ -85,15 +85,16 @@ router.post('/reset', (req, res) => {
 
 })
 
-router.post('/docterDetails', (req, res) => {
+router.get('/docterDetails', (req, res) => {
     //update data to firebase
-
-    firebase.database().ref('user/Doctors').child(req.body.lisenceid).set({
+    let UID = firebase.auth().currentUser.uid;
+    console.log("UID: " + UID);
+    // firebase.database().ref('user/Doctors').child(req.body.lisenceid).set({
         
-        LicId: req.body.lisenceid,
-        DocName: req.body.dcname,
-        DcSpecaility: req.body.dcspeciality
-    });
+    //     LicId: req.body.lisenceid,
+    //     DocName: req.body.dcname,
+    //     DcSpecaility: req.body.dcspeciality
+    // });
         
     
 })
