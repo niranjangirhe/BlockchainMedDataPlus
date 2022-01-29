@@ -83,23 +83,30 @@ class Blockchain {
 var chain = null;
 const dbRef = firebase.database().ref();
 var obj1 = null;
-dbRef.child("user").child("bc").get().then((snapshot) => {
-    if (snapshot.exists()) {
-        console.log(snapshot.val());
-        chain = snapshot.val();
-        obj1 = new Blockchain();
-        obj1.chain = chain
-    } else {
-        console.log("No data available");
-        obj1 = new Blockchain();
-        obj1.createBlock();
-        firebase.database().ref('user').set({
-            bc: obj1.chain
-        });
-    }
-}).catch((error) => {
-    console.error(error);
+
+var starCountRef = firebase.database().ref('user');
+starCountRef.on('value', (snapshot) => {
+    dbRef.child("user").child("bc").get().then((snapshot) => {
+        if (snapshot.exists()) {
+            console.log(snapshot.val());
+            chain = snapshot.val();
+            obj1 = new Blockchain();
+            obj1.chain = chain
+        } else {
+            console.log("No data available");
+            obj1 = new Blockchain();
+            obj1.createBlock();
+            firebase.database().ref('user').set({
+                bc: obj1.chain
+            });
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
 });
+
+
+
 
 router.get('/addreport', (req, res) => {
     console.log("Adding block 6");
