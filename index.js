@@ -40,7 +40,7 @@ app.get('/signup',(req,res)=>{
 
 app.get('/addreport',(req,res)=>{
     res.render('addreport')
-})
+}) 
 
 app.get('/Doctordetail',(req,res)=>{
     res.render('Doctdetail')
@@ -49,7 +49,9 @@ const port = process.env.PORT || 4000
 app.get('/reset',(req,res)=>{
     res.render('reset')
 })
+app.get('/Addpatient',(req,res)=>{
+    res.render('Addpatient')
+})
 
 
-const port = process.env.PORT || 4003
 app.listen(port, () => console.log("Server is Running...",port));

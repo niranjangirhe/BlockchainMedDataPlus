@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses Setting</title>
+  <link rel="icon" href="/assets/favicon/course.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/addreport.css">
+
+</head>
+<!-- nav -->
+
+<body>
+  <ul class="top-nav">
+    <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
+    <h4 class="center">Add Patient</h4>
+  </ul>
+
+  <!-- sidenav -->
+  <ul id="slide-out" class="sidenav blue darken-2">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img id="test" src="/assets/bg.jpg">
+        </div>
+        <a href="#user"><img class="circle" src="/assets/user.png"></a>
+        <a href="#name"><span class="black-text name" id="navname"><b>Admin</b></span></a>
+        <a href="#email"><span class="black-text email" id="navemail">admin@admin.com</span></a>
+      </div>
+    </li>
+
+    <li><a href="/admin/adminhomepage.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">schedule</i>Schedule</a></li>
+    <li><a href="/admin/courses.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">book</i>Courses Setting</a></li>
+    <li><a href="/admin/allocation.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">check_box</i>Allocation</a></li>
+    <li><a href="/admin/studdata.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">data_usage</i>Student Data</a></li>
+    <li><a href="/admin/adminsettings.html" class="waves-effect waves-light white-text"><i
+          class="material-icons white-text">settings</i>Admin Settings</a></li>
+    <li>
+      <div class="divider white-text"></div>
+    </li>
+    <li><a class="waves-effect waves-light btn black-text white" id="studlogout" onclick="logout()">Logout</a></li>
+  </ul>
+
+  <div class="container">
+    <!-- Add or Edit New Course -->
+    <div id="course-input">
+      <h6>Patient Details</h6>
+     
+      <div class="input-field col s6">
+        <input id="pname" name="pname1" type="number" class="validate">
+        <label for="pname">Fullname</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="pdb" name="pdb1" type="date" class="validate">
+        <label for="pdb">Date of Birth</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="phno" name="phno1" type="number" class="validate">
+        <label for="phno">Phone No</label>
+      </div>
+      <div class="input-field col s6">
+        <label for="gender">Gender</label>
+        <select id="gender" name = "gender1" class="input-field col s12" onchange="myFunction()">
+          <option value="" disabled selected></option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+          
+        </select>
+      </div>
+      <div class="input-field col s6">
+        <input id="paddr" name="paddr1" type="text" class="validate">
+        <label for="paddr">Address</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="padhar" name="padhar1" type="number" class="validate">
+        <label for="padhar">Adhar Card</label>
+      </div>
+      
+    
+    
+    
+
+    
+     
+
+
+
+      <a class="waves-effect waves-light btn blue darken-2" id="addcourse" onclick="addcourse()">Submit</a>
+    </div>
+
+
+    <!-- Edit Course -->
+    
+
+
+    <!-- Course Table -->
+
+   
+    
+  </div>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- side nav script -->
+  <script>
+  
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+    });
+  </script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-firestore.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
+  <script src="/scripts/adminconsole.js"></script>
+  <script src="/scripts/addreport.js"></script>
+</body>
+
+</html>
