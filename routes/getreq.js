@@ -101,7 +101,7 @@ router.get('/docterDetails', (req, res) => {
 
 router.post('/patientdetails',(req,res)=>{
 
-    firebase.database().ref('user/Patient').child(req.body.phno1).update({
+    firebase.database().ref('user/Patient').child(req.body.phno1).set({
         
         Name: req.body.pname1,
         DOB: req.body.pdb1,
