@@ -14,6 +14,12 @@
 
 <body>
 
+    <style>
+        [type="checkbox"]:checked+span:not(.lever):before {
+            border-right: 2px solid #1976D2;
+            border-bottom: 2px solid #1976D2;
+        }
+    </style>
     <div class="home-overlay"></div>
     <h3 class="center">Welcome to -- Portal</h3>
     <main class="login-card">
@@ -32,6 +38,14 @@
                         <input id="signinpassword" type="password" placeholder="Password" style="margin-bottom: 0px;">
                         <small>Enter Password</small>
                     </div>
+                    <form>
+                        <p>
+                            <label>
+                                <input type="checkbox" id="isDoc"/>
+                                <span>I am a Doctor</span>
+                            </label>
+                        </p>
+                    </form>
                     <div class="center">
                         <a href="login.html">Already have an account</a>
                     </div>
@@ -41,6 +55,7 @@
                     <div class="progress blue lighten-4" id="signinprogress">
                         <div class="indeterminate blue darken-2"></div>
                     </div>
+                    
                     <div class="center">
                         <a class="waves-effect waves-light btn blue darken-2" id="signinbtn"
                             onclick="signup(event)">Sign Up</a>

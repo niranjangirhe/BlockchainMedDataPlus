@@ -8,16 +8,29 @@ async function signup(e) {
     e.preventDefault()
     const email = document.getElementById("signinemail")
     const password = document.getElementById("signinpassword");
+    const isDoc = document.getElementById("isDoc");
     try {
         var progress = document.getElementById("signinprogress");
         var btn = document.getElementById("signinbtn");
         progress.style.visibility = "visible";
         btn.style.visibility = "hidden";
-        const result = await Auth.createUserWithEmailAndPassword(email.value, password.value)
-        // await result.user.updateProfile({
-        //     displayName: "User",
-        //     photoURL: PRN.value
-        // });
+        //const result = await Auth.createUserWithEmailAndPassword(email.value, password.value)
+
+        if(isDoc.checked)
+        {
+            await result.user.updateProfile({
+                displayName: "Doc",
+                photoURL: PRN.value
+            });
+        }
+        else
+        {
+            await result.user.updateProfile({
+                displayName: "User",
+                photoURL: PRN.value
+            });
+        }
+        
         
         // await firebase.firestore().collection("studentprefs").doc(PRN.value).set({
         //     email: email.value,
