@@ -97,7 +97,7 @@ starCountRef.on('value', (snapshot) => {
             console.log("No data available");
             obj1 = new Blockchain();
             obj1.createBlock();
-            firebase.database().ref('user').push({
+            firebase.database().ref('user').set({
                 bc: obj1.chain
             });
         }
