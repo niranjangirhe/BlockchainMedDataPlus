@@ -18,8 +18,7 @@ app.use(express.static(publicDirectory));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use('/', require('./routes/getreq'));
-
-
+app.use('/', require('./routes/blockchain'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -42,5 +41,7 @@ app.get('/signup',(req,res)=>{
 app.get('/reset',(req,res)=>{
     res.render('reset')
 })
-const port = process.env.PORT || 4000
+
+
+const port = process.env.PORT || 4003
 app.listen(port, () => console.log("Server is Running...",port));
