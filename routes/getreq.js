@@ -7,6 +7,7 @@ const { append } = require('vary');
 const firebaseConfig = {
     apiKey: "AIzaSyB6i_CTLfQh3vpBwV59sHxASXKSAf9wwB4",
     authDomain: "med-data-plus.firebaseapp.com",
+    databaseURL: "https://med-data-plus-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "med-data-plus",
     storageBucket: "med-data-plus.appspot.com",
     messagingSenderId: "772756370856",
