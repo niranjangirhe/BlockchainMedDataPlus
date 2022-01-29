@@ -4,15 +4,13 @@ const firebase = require('firebase');
 const router = express.Router();
 const path = require('path');
 const { append } = require('vary');
-
-var Auth = firebase.auth();
-
+checkuser()
+async function checkuser(){
+var Auth = await firebase.auth();
 console.log(Auth.currentUser);
+}
 
 
-router.post('/docterDetails', (req, res) => {
-    console.log(req.body)
-})
 
 
 
@@ -118,6 +116,5 @@ router.get('/addreport', (req, res) => {
         bc: obj1.chain
     });
 });
-
-
+console.log()
 module.exports = router;

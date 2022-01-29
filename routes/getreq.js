@@ -17,35 +17,72 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 router.post('/login', (req, res) => {
-    
+
     firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).then(() => {
-        res.redirect('/');
+        if (firebase.auth().currentUser != null) {
+            console.log(firebase.auth().currentUser.email + firebase.auth().currentUser.displayName)
+            if (firebase.auth().currentUser.displayName == "Doc") {
+                res.redirect("/Doctordetail")
+            }
+            else {
+                res.redirect("/Addpatient")
+            }
+        }
+    }).catch((error) => {
+        res.send(error.message);
+    });
+});
+
+router.get('/logout', (req, res) => {
+
+    firebase.auth().signOut().then(() => {
+        res.redirect('/login');
     }).catch((error) => {
         res.send(error.message);
     });
 });
 
 router.post('/signup', (req, res) => {
-    if(req.body.password === req.body.cpassword){
+    if (req.body.password === req.body.cpassword) {
         firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password).then(() => {
-            res.redirect('/login');
+            if (req.body.usertype == "doctor") {
+                firebase.auth().currentUser.updateProfile({
+                    displayName: "Doc"
+                }).then(() => {
+                    res.redirect('/login');
+                }).catch((error) => {
+                    // An error occurred
+                    // ...
+                });
+            }
+            else {
+                firebase.auth().currentUser.updateProfile({
+                    displayName: "User"
+                }).then(() => {
+                    res.redirect('/login');
+                }).catch((error) => {
+                    // An error occurred
+                    // ...
+                });
+            }
+
         }).catch((error) => {
             res.send(error.message);
         });
-    }else{
+    } else {
         console.log('Passwords do not match');
-    }   
+    }
 });
 
-router.post('/reset',(req,res)=>{
+router.post('/reset', (req, res) => {
     //reset password
-    firebase.auth().sendPasswordResetEmail(req.body.email).then(()=>{
+    firebase.auth().sendPasswordResetEmail(req.body.email).then(() => {
         res.redirect('/login');
-    }).catch((error)=>{
+    }).catch((error) => {
         res.send(error.message);
     })
     console.log("Email sent");
-    
+
 })
 
 router.post('/docterDetails', (req, res) => {
