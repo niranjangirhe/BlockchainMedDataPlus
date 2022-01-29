@@ -23,10 +23,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.get('/',(req,res)=>{
+    
     res.render('index')
 })
 
 app.get('/login',(req,res)=>{
+    
     res.render('login')
 })
 
@@ -49,6 +51,14 @@ app.get('/Addpatient',(req,res)=>{
     res.render('Addpatient')
 })
 
+//logout using firebase
+app.get('/logout',(req,res)=>{
+    firebase.auth().signOut().then(()=>{
+        res.redirect('/login')
+    }).catch((error)=>{
+        res.send(error.message)
+    })
+});
 
 const port = process.env.PORT || 4001
 app.listen(port, () => console.log("Server is Running...",port));
