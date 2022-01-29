@@ -20,13 +20,15 @@
         <span class="card-title center">
           <h4>Forgot Password</h4>
         </span>
+        <form action="/reset" method="post">
         <div>
-          <input id="studresetemail" type="email" placeholder="Email ID">
+          <input name="email" id="email" type="email" placeholder="Email ID">
           <small>Enter Email-ID</small>
         </div>
         <div class="center">
-          <a class="waves-effect waves-light btn blue darken-2" id="forgotbtn" onclick="forgotpass(event)">Submit</a>
+          <button class="waves-effect waves-light btn blue darken-2" id="forgotbtn" type="submit" >Submit</button>
         </div>
+      </form>
       </div>
       <div class="progress blue lighten-4" id="resetprogress">
         <div class="indeterminate blue darken-2"></div>
@@ -65,26 +67,6 @@
 
   <!--Firebase Connection-->
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-  <script>
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-            apiKey: "AIzaSyB6i_CTLfQh3vpBwV59sHxASXKSAf9wwB4",
-            authDomain: "med-data-plus.firebaseapp.com",
-            projectId: "med-data-plus",
-            storageBucket: "med-data-plus.appspot.com",
-            messagingSenderId: "772756370856",
-            appId: "1:772756370856:web:b69242c1dc4e9f66ba599d"
-        };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
-  <script src="scripts/auth.js"></script>
 </body>
 
 </html>
