@@ -8,10 +8,16 @@ const { append } = require('vary');
 var Auth = firebase.auth();
 
 console.log(Auth.currentUser);
+
+
+
+
+
+
 //blockchain
 class Block {
-    constructor(index, timestamp, data, prevhash = '') {
-        this.index = index;
+    constructor(timestamp, data, prevhash = '') {
+        this.index = 0;
         this.timestamp = timestamp;
         this.data = data;
         this.prevhash = prevhash;
@@ -33,18 +39,19 @@ class Block {
 
 class Blockchain {
     constructor() {
-        this.chain = [this.createBlock()];
+        this.chain = [];
         this.difficulty = 4;
     }
 
     createBlock() {
-        return new Block(0, "01/01/2022", "Pradyumna", "0",);
+        this.chain = [new Block(0, "01/01/2022", "Genisis", "0")];
     }
     getLatestBlock() {
         return this.chain[this.chain.length - 1];
     }
     addBlock(newBlock) {
         newBlock.prevhash = this.getLatestBlock().hash;
+        newBlock.index = this.chain.length;
         newBlock.mineBlock(this.difficulty);
         this.chain.push(newBlock);
 
@@ -72,22 +79,35 @@ class Blockchain {
     }
 }
 // obj1.ittrate();
-let obj1 = new Blockchain();
-console.log("Adding block 1");
-obj1.addBlock(new Block(1, "01/01/2022", { amount: 1 }))
-console.log("Adding block 2");
-obj1.addBlock(new Block(2, "01/01/2023", { amount: 5 }))
-console.log("Adding block 3");
-obj1.addBlock(new Block(3, "01/01/2024", { amount: 12 }))
-console.log("Adding block 4");
-obj1.addBlock(new Block(4, "01/01/2025", { amount: 45 }))
-console.log("Adding block 5");
-obj1.addBlock(new Block(5, "01/01/2027", { amount: 56 }))
-console.log(obj1.chain);
 
-router.post('/addreport', (req, res) => {
-    console.log("Adding block 6");
-    obj1.addBlock(new Block(6, "01/01/2027", { amount: 56 }))
-    console.log(obj1.chain);
+var chain = null;
+const dbRef = firebase.database().ref();
+var obj1 = null;
+dbRef.child("user").child("bc").get().then((snapshot) => {
+    if (snapshot.exists()) {
+        console.log(snapshot.val());
+        chain = snapshot.val();
+        obj1 = new Blockchain();
+        obj1.chain = chain
+    } else {
+        console.log("No data available");
+        obj1 = new Blockchain();
+        obj1.createBlock();
+        firebase.database().ref('user').set({
+            bc: obj1.chain
+        });
+    }
+}).catch((error) => {
+    console.error(error);
 });
+
+router.get('/addreport', (req, res) => {
+    console.log("Adding block 6");
+    obj1.addBlock(new Block("01/01/2027", { amount: 56 }))
+    firebase.database().ref('user').set({
+        bc: obj1.chain
+    });
+});
+
+
 module.exports = router;
