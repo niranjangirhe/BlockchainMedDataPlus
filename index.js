@@ -40,7 +40,7 @@ app.get('/signup',(req,res)=>{
 
 app.get('/addreport',(req,res)=>{
     res.render('addreport')
-})
+}) 
 
 app.get('/Doctordetail',(req,res)=>{
     res.render('Doctdetail')
@@ -48,6 +48,9 @@ app.get('/Doctordetail',(req,res)=>{
 
 app.get('/reset',(req,res)=>{
     res.render('reset')
+})
+app.get('/Addpatient',(req,res)=>{
+    res.render('Addpatient')
 })
 
 
