@@ -47,4 +47,16 @@ router.post('/reset',(req,res)=>{
     
 })
 
+router.post('/docterDetails', (req, res) => {
+    //update data to firebase
+
+    firebase.database().ref('user/Doctors').child(req.body.lisenceid).set({
+        
+        LicId: req.body.lisenceid,
+        DocName: req.body.dcname,
+        DcSpecaility: req.body.dcspeciality
+    });
+        
+    
+})
 module.exports = router;
