@@ -1,5 +1,6 @@
 const express = require('express');
 const firebase = require('firebase');
+const { request } = require('http');
 const router = express.Router();
 const path = require('path');
 const { append } = require('vary');
@@ -58,5 +59,23 @@ router.post('/docterDetails', (req, res) => {
     });
         
     
+})
+
+router.post('/patientdetails',(req,res)=>{
+
+    firebase.database().ref('user/Patient').child(req.body.phno1).set({
+        
+        Name: req.body.pname1,
+        DOB: req.body.pdb1,
+        PhoneNo: req.body.phno1,
+        Gender:req.body.gender1,
+        Address:req.body.paddr1,
+        AdharNo:req.body.padhar1,
+        Med_history:req.body.pmedhis1
+
+    });
+   
+   
+
 })
 module.exports = router;
