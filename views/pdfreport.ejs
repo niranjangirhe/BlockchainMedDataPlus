@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses Setting</title>
+    <title>Generate PDF</title>
     <link rel="icon" href="/assets/favicon/course.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -38,30 +38,25 @@
     <div class="grid">
         <!-- Add or Edit New Course -->
         <div id="course-input">
+
             <h6>Patient Details</h6>
-            
-                <div id="invoice">
+
+            <div id="printableArea">
                 <div class="input-field col s6">
-                    <input id="cname" type="text" name="fullName" class="validate">
+                    <input id="cname" type="text" name="fullName" value="Anuj" class="validate">
                     <label for="cname">Full Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="cno" type="email" name="email" class="validate">
+                    <input id="cno" type="email" name="email" value="anujbarave@gmail.com" class="validate">
                     <label for="cno">Email ID</label>
                 </div>
                 <div class="input-field col s6">
-                    <h6>Report Type</h6>
-                    <select id="schooldd" class="input-field col s12" name="reportType" onchange="myFunction()">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Blood</option>
-                        <option value="2">Urine</option>
-                        <option value="3">Sugar</option>
-                        <option value="4">Blood Pressure</option>
-                    </select>
+                    <input id="cno" type="email" name="text" value="Blood" class="validate">
+                    <label for="cno">Type</label>
                 </div>
                 <div id="Blood" style="display: none;">
                     <div class="input-field col s6">
-                        <input id="u1" type="number" name="hemoglobin" class="validate">
+                        <input id="u1" type="number" name="hemoglobin" value="10g/dl" class="validate">
                         <label for="u1">Hemoglobin</label>
                     </div>
                     <div class="input-field col s6">
@@ -128,50 +123,52 @@
                 </div>
 
 
+
             </div>
-
-                <button type="submit" class="waves-effect waves-light btn blue darken-2" id="addcourse"
-                    onclick="generatePDF()">Generate PDF</button>
-        </div>
         
+        <button type="submit" class="waves-effect waves-light btn blue darken-2" id="addcourse"
+            onclick="printDiv('printableArea')" value="print a div!">Generate PDF</button>
+    </div>
 
 
-        <!-- Edit Course -->
+    </div>
+    <!-- Edit Course -->
 
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-        <!-- side nav script -->
-        <script>
+    <!-- side nav script -->
+    <script>
 
-            function generatePDF() {
-                console.log("anuj");
-                // Choose the element that our invoice is rendered in.
-                const element = document.getElementById("invoice");
-                // Choose the element and save the PDF for our user.
-                html2pdf().from(element).save();
-            }
-            document.addEventListener('DOMContentLoaded', function () {
-                var elems = document.querySelectorAll('.sidenav');
-                var instances = M.Sidenav.init(elems);
-            });
 
-            document.addEventListener('DOMContentLoaded', function () {
-                var elems = document.querySelectorAll('select');
-                var instances = M.FormSelect.init(elems);
-            });
-        </script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
 
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-firestore.js"></script>
-        <!-- TODO: Add SDKs for Firebase products that you want to use
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+    </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
 
-        <script src="/scripts/adminconsole.js"></script>
-        <script src="/scripts/addreport.js"></script>
+    <script src="/scripts/adminconsole.js"></script>
+    <script src="/scripts/addreport.js"></script>
 </body>
 
 </html>
