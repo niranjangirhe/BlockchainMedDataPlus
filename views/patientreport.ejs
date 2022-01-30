@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses Setting</title>
+  <link rel="icon" href="/assets/favicon/course.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/addreport.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+
+</head>
+<!-- nav -->
+
+<body>
+  <ul class="top-nav">
+    <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
+    <h4 class="center">View Report</h4>
+  </ul>
+ 
+
+<div class="row">
+  <div class="column" >
+    <div id="curve_chart" style="width: 90%; height: 450px"></div>
+  </div>
+  <div class="column" >
+    <div id="columnchart_material" style="width: 90%; height: 450px"></div>
+  </div>
+</div>
+
+<section>
+    <div id="ctable">
+      <table id="courset" class="centered striped">
+        <thead>
+          <tr>
+            <th>Report No</th>
+            <th>Patient Name</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Open View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="padding"></div>
+  </div>
+</section>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- side nav script -->
+  <script>
+   
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+    });
+  </script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-firestore.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
+  <script src="/scripts/adminconsole.js"></script>
+  <script src="/scripts/addreport.js"></script>
+</body>
+
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'RBC', 'WBC'],
+          ['2018',  1000,      400],
+          ['2019',  1170,      460],
+          ['2020',  660,       1120],
+          ['2021',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Blood Report',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Hemoglobin', 'RBC', 'WBC'],
+          ['2018', 1000, 400, 200],
+          ['2019', 1170, 460, 250],
+          ['2020', 660, 1120, 300],
+          ['2021', 1030, 540, 350]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Blood Report',
+            subtitle: 'Hemoglobin,RBC,WBC of 2018-2021',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+</html>

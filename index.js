@@ -49,6 +49,10 @@ app.get('/reset',(req,res)=>{
 app.get('/Addpatient',(req,res)=>{
     res.render('Addpatient')
 })
+app.get('/patientreport',(req,res)=>{
+    res.render('patientreport')
+})
+
 
 //logout using firebase
 app.get('/logout',(req,res)=>{
