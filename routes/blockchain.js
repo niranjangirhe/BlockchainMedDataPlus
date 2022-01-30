@@ -137,7 +137,7 @@ router.post('/getotp',(req,res)=>{
                         }
                     }
                 }   
-                console.log(table_data)
+                console.log(table_data[2])
                 res.render('addreport',{data:table_data})             
             }).catch((error) => {
                 console.error(error);

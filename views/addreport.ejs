@@ -175,22 +175,22 @@
             </tr>
           </thead>
           <tbody>
+            <%for(let i=0;i<data.length;i++ ){%>
+              <%data.forEach(function(data1){%>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><%=data1.index%></td>
+              <td><%=data1.name%></td>
+              <td><%=data1.timestamp%></td>
+              <td><%=data1.type%></td>
             </tr>
+          <%})}%>
+
           </tbody>
         </table>
       </div>
       <div id="padding"></div>
   </div>
-  <% for(let x=0; x < data.length ;x++){ %>
-  <p><% = x.name %></p>
-  <% } %>
+
   <script>
     function addCourseTable(cno, cname, intcap, extcap, cscl) {
       var table = document.getElementById("courset");
