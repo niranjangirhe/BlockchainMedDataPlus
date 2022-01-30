@@ -27,6 +27,9 @@ app.get('/',(req,res)=>{
     res.render('index')
 })
 
+// let yourDate = new Date()
+// console.log(yourDate.toISOString().split('T')[0]);
+
 app.get('/login',(req,res)=>{    
     res.render('login')
 })

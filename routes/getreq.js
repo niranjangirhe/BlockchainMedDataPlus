@@ -41,7 +41,7 @@ router.post('/login', (req, res) => {
                 dbRef.child("user").child("Patients").child(user.uid).get().then((snapshot) => {
                     if (snapshot.exists()) {
                         console.log("Patient data");
-                        res.redirect("/addreport")
+                        res.redirect("/patientreport")
                     } else {
                         console.log("No Patients data");
                         res.redirect("/Addpatient")
@@ -145,9 +145,11 @@ router.post('/patientdetails', (req, res) => {
         email: user.email,
         report: 0
     }).then(() => {
-        res.redirect('/addreport');
+        res.redirect('/patientreport');
     }).catch((error) => {
         res.send("No user found");
     })
 })
+
+
 module.exports = router;
