@@ -1,5 +1,6 @@
 # The Inevitable
-# MedData ## Blockchain to secure Medical Records
+# MedData
+Blockchain to secure Medical Records
 
 ![Logo](logo.png)
 
