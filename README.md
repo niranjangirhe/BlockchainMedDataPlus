@@ -15,6 +15,11 @@ Build a secure blockchain network to store the medical records of patients. Thes
 records need to be immutable and tamper-free and can be accessed by users only after
 proper authorization.
 
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
 ## Features
 
 - Generates health records
