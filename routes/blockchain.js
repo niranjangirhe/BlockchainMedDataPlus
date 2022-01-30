@@ -123,16 +123,24 @@ router.post('/getotp',(req,res)=>{
                 {
                     psuedodata.push(snapshot.val()["hash" + i.toString()]);
                 }
-                               
+                // var table_data=[]     
                 for(let i in psuedodata){
                     for(let j in obj1.chain){
                         if(obj1.chain[j].hash==psuedodata[i]){
-                            console.log(obj1.chain[j].data)
+                            console.log(obj1.chain[j])
+                            var smallarray={}
+                            smallarray.index=i
+                            smallarray.name=obj1.chain[j].data.fullName
+                            smallarray.timestamp=obj1.chain[j].timestamp
+                            smallarray.type=obj1.chain[j].data.reportType
+                            // table_data.push(smallarray)
+                            // table_data=JSON.parse(table_data)
+                            res.render('addreport',{data:smallarray})  
                         }
                     }
-                }
-
-                
+                }   
+                //console.log(table_data)
+                           
             }).catch((error) => {
                 console.error(error);
             });
