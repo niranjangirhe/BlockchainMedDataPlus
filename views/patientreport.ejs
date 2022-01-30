@@ -45,14 +45,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          <%for(let i=0;i<data.length;i++ ){%>
+                
+            <tr>
+              <td><%=data[i].index%></td>
+              <td><%=data[i].name%></td>
+              <td><%=data[i].timestamp%></td>
+              <td><%=data[i].type%></td>
+              <td><a href="\assets\file<%=i%>.pdf" download>Download</a></td>
+            </tr>
+          <%}%>
+
         </tbody>
       </table>
     </div>
@@ -78,10 +81,10 @@
 
   function maketable()
   {
-    addCourseTable('1','Pradyumna','30-01-2022','1',"view pdf")
-    addCourseTable('2','Pradyumna','30-01-2022','2',"view pdf")
-    addCourseTable('3','Pradyumna','30-01-2022','2',"view pdf")
-    addCourseTable('4','Pradyumna','30-01-2022','3',"view pdf")
+    // addCourseTable('1','Pradyumna','30-01-2022','1',"view pdf")
+    // addCourseTable('2','Pradyumna','30-01-2022','2',"view pdf")
+    // addCourseTable('3','Pradyumna','30-01-2022','2',"view pdf")
+    // addCourseTable('4','Pradyumna','30-01-2022','3',"view pdf")
   }
   maketable()
 </script>
