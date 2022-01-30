@@ -1,4 +1,4 @@
-# The Inevitable
+# S.P.I.T Hackathon Team - The Inevitable
 # MedData
 Blockchain to secure Medical Records
 
