@@ -7,7 +7,6 @@ const { append } = require('vary');
 checkuser()
 async function checkuser() {
     var Auth = await firebase.auth();
-    console.log(Auth.currentUser);
 }
 
 
@@ -89,7 +88,7 @@ var starCountRef = firebase.database().ref('user');
 starCountRef.on('value', (snapshot) => {
     dbRef.child("user").child("bc").get().then((snapshot) => {
         if (snapshot.exists()) {
-            console.log(snapshot.val());
+            //console.log(snapshot.val());
             chain = snapshot.val();
             obj1 = new Blockchain();
             obj1.chain = chain
@@ -107,7 +106,7 @@ starCountRef.on('value', (snapshot) => {
 });
 
 router.post('/getotp',(req,res)=>{
-    console.log(req.body);
+    //console.log(req.body);
     const dbRef = firebase.database().ref();
     var clientuser;
     var mostViewedPosts = dbRef.child("user/Patients").orderByChild('email').equalTo(req.body.email);
@@ -116,7 +115,7 @@ router.post('/getotp',(req,res)=>{
             for (let x in snapshot.val()) {
                 clientuser = x
             }
-            console.log("client user:  " + clientuser)
+            // console.log("client user:  " + clientuser)
             var psuedodata=[];
             dbRef.child("user/Patients").child(clientuser).get().then((snapshot) => {
                 var hashno = snapshot.val().report;
@@ -157,7 +156,7 @@ router.get('/appendreport', (req, res) => {
 });
 
 router.post('/postreport', (req, res) => {
-    console.log(req.body);
+    //console.log(req.body);
     const dbRef = firebase.database().ref();
     var clientuser;
     var mostViewedPosts = dbRef.child("user/Patients").orderByChild('email').equalTo(req.body.email);
@@ -173,7 +172,7 @@ router.post('/postreport', (req, res) => {
             for (let x in req.body) {
                 if (req.body[x] != "") {
                     adder[x]=req.body[x]
-                    console.log("val : " + adder[x])
+                    //console.log("val : " + adder[x])
                 }
             }
             obj1.addBlock(new Block("01/01/2027", adder))
