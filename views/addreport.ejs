@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Record</title>
+  <title>Courses Setting</title>
   <link rel="icon" href="/assets/favicon/course.png" type="image/gif" sizes="16x16">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -136,6 +136,7 @@
 
       <!-- Edit Course -->
       <div id="edit">
+        <form action="/getotp" method="post">
           <div id="editdel">
             <h6>Enter Email-ID</h6>
             <div class="input-field col s6 center">
@@ -148,7 +149,7 @@
               <div class="input-field col s6 center">
                 <input type="number" name="otp" id="cdelete">
                 <label for="cdelete">Enter OTP</label>
-                <button type="submit" class="waves-effect waves-light btn blue darken-2" id="" onclick="maketable()">Get Report</button>
+                <button type="submit" class="waves-effect waves-light btn blue darken-2" id="">Get Report</button>
               </div>
             </div>
             <!-- progress bar for all process -->
@@ -156,6 +157,7 @@
               <div class="indeterminate blue darken-2"></div>
             </div>
           </div>
+        </form>
       </div>
 
 
@@ -186,8 +188,9 @@
       </div>
       <div id="padding"></div>
   </div>
-
- 
+  <% for(let x=0; x < data.length ;x++){ %>
+  <p><% = x.name %></p>
+  <% } %>
   <script>
     function addCourseTable(cno, cname, intcap, extcap, cscl) {
       var table = document.getElementById("courset");
@@ -201,7 +204,8 @@
       cnamet.innerHTML = cname;
       intcapt.innerHTML = intcap;
       extcapt.innerHTML = extcap;
-      csclt.innerHTML = '<a href="/pdfreport" >cscl</a>';
+      csclt.innerHTML = cscl;
+      opent.innerHTML = open;
     }
  
     function maketable()
@@ -209,7 +213,8 @@
       addCourseTable('1','Pradyumna','30-01-2022','1',"view pdf")
       addCourseTable('2','Pradyumna','30-01-2022','2',"view pdf")
       addCourseTable('3','Pradyumna','30-01-2022','2',"view pdf")
-      addCourseTable('4','Pradyumna','30-01-2022','3',"view pdf")
+      addCourseTable('4','Pradyumna','30-01-2022','1',"view pdf")
+
     }
     
   </script>
