@@ -24,6 +24,9 @@ proper authorization.
 - SignUp
 ![App Screenshot](https://github.com/MedDataPlus/The-Inevitable/blob/db682d245767940d23fce4d2cff1c7559418226b/WhatsApp%20Image%202022-01-30%20at%206.33.24%20AM.jpeg)
 
+- Add Report
+![App Screenshot](https://github.com/MedDataPlus/The-Inevitable/blob/d81e8e2a3ec1acd3755538e21dee0ed85e543eca/WhatsApp%20Image%202022-01-30%20at%206.40.46%20AM.jpeg)
+
 ## Features
 
 - Generates health records
