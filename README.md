@@ -1,4 +1,4 @@
-
+# The Inevitable
 # MedData
 
 ![Logo](logo.png)
@@ -18,7 +18,6 @@ is no system which accumulates all the medical records of a person in a secure m
 - Uses blockchain to keep data immutable and tamper-free
 - Easy to access
 
-# The Inevitable
 ## Team Members
 ### Mayur Ghodekar
 ### Niranjan Girhe
