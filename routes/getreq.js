@@ -111,19 +111,6 @@ router.post('/reset', (req, res) => {
 router.post('/docterDetails', (req, res) => {
     //update data to firebase
     const user = firebase.auth().currentUser;
-    // const dbRef = firebase.database().ref();
-    // var mostViewedPosts = dbRef.child("user/Patients").orderByChild('PhoneNo').equalTo("7768989938");
-    // mostViewedPosts.get().then((snapshot) => {
-    //     if (snapshot.exists()) {
-    //         console.log(snapshot.val());
-    //         //res.redirect("/addreport")
-    //     } else {
-    //         console.log("No Patients data");
-    //         //res.redirect("/Addpatient")
-    //     }
-    // }).catch((error) => {
-    //     console.error(error);
-    // });
     if (user) {
         firebase.database().ref('user/Doctors').child(user.uid).set({
 
@@ -155,7 +142,8 @@ router.post('/patientdetails', (req, res) => {
         AdharNo: req.body.padhar1,
         Med_history: req.body.pmedhis1,
         uid: user.uid,
-        email: user.email
+        email: user.email,
+        report: 0
     }).then(() => {
         res.redirect('/addreport');
     }).catch((error) => {

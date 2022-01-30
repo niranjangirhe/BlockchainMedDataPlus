@@ -5,9 +5,9 @@ const router = express.Router();
 const path = require('path');
 const { append } = require('vary');
 checkuser()
-async function checkuser(){
-var Auth = await firebase.auth();
-console.log(Auth.currentUser);
+async function checkuser() {
+    var Auth = await firebase.auth();
+    console.log(Auth.currentUser);
 }
 
 
@@ -111,14 +111,60 @@ starCountRef.on('value', (snapshot) => {
 
 router.get('/appendreport', (req, res) => {
     console.log("Adding block");
-    obj1.addBlock(new Block("01/01/2027", { amount: 56 }))
+    obj1.addBlock(new Block("01/01/2027", res.body))
     firebase.database().ref("user/bc").set(
-       obj1.chain
+        obj1.chain
     );
 });
 
 router.post('/postreport', (req, res) => {
     console.log(req.body);
+    const dbRef = firebase.database().ref();
+    var clientuser;
+    var mostViewedPosts = dbRef.child("user/Patients").orderByChild('email').equalTo(req.body.email);
+    mostViewedPosts.get().then((snapshot) => {
+        if (snapshot.exists()) {
+            for (let x in snapshot.val()) {
+                clientuser = x
+            }
+            console.log("client user:  " + clientuser)
+            console.log("Adding block");
+            // console.log(req.body)
+            var adder={};
+            for (let x in req.body) {
+                if (req.body[x] != "") {
+                    adder[x]=req.body[x]
+                    console.log("val : " + adder[x])
+                }
+            }
+            obj1.addBlock(new Block("01/01/2027", adder))
+            firebase.database().ref("user/bc").set(
+                obj1.chain
+            ).then(()=>{
+                res.status(401).end('Data Added sucessfully')
+            }).catch((error)=>{
+                console.error(error);
+            });
+            var psuedodata;
+            dbRef.child("user/Patients").child(clientuser).get().then((snapshot) => {
+                psuedodata = snapshot.val();
+                var hashno = psuedodata.report;
+                psuedodata.report = hashno + 1;
+                psuedodata["hash" + hashno.toString()] = obj1.getLatestBlock().hash;
+                firebase.database().ref("user/Patients/" + clientuser).set(
+                    psuedodata
+                );
+            }).catch((error) => {
+                console.error(error);
+            });
+
+
+        } else {
+            res.status(401).end('Patients not yet registered');
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
 })
 console.log()
 module.exports = router;
