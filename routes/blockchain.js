@@ -109,7 +109,7 @@ router.get('/patientreport',(req,res)=>{
         //console.log(req.body);
         const dbRef = firebase.database().ref();
         var psuedodata=[];
-        dbRef.child("user/Patients").child("vfiXblsHG6WopiVYxHi2qnLd0Mu2").get().then((snapshot) => {
+        dbRef.child("user/Patients").child(firebase.auth().currentUser.uid).get().then((snapshot) => {
             var hashno = snapshot.val().report;
             for(let i=0;i<hashno;i++)
             {
