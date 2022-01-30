@@ -1,7 +1,7 @@
 
 # MedData
 
-![Logo](MEDATA__1_-removebg-preview.png)
+![Logo](MEDATA-removebg-preview.png)
 
 ## Background
 Right now there is no efficient & secure system to maintain patient’s
