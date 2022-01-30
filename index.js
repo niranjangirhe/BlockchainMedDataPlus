@@ -53,9 +53,8 @@ app.get('/reset',(req,res)=>{
 app.get('/Addpatient',(req,res)=>{
     res.render('Addpatient')
 })
-app.get('/patientreport',(req,res)=>{
-    res.render('patientreport')
-})
+
+
 app.get('/pdfreport',(req,res)=>{
     res.render('pdfreport')
 })

@@ -45,14 +45,16 @@
           </tr>
         </thead>
         <tbody>
+          <%for(let i=0;i<data.length;i++ ){%>
+            <%data.forEach(function(data1){%>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><%=data1.index%></td>
+            <td><%=data1.name%></td>
+            <td><%=data1.timestamp%></td>
+            <td><%=data1.type%></td>
+            <td><a href="">Download</a></td>
           </tr>
+        <%})}%>
         </tbody>
       </table>
     </div>
@@ -78,10 +80,10 @@
 
   function maketable()
   {
-    addCourseTable('1','Pradyumna','30-01-2022','1',"view pdf")
-    addCourseTable('2','Pradyumna','30-01-2022','2',"view pdf")
-    addCourseTable('3','Pradyumna','30-01-2022','2',"view pdf")
-    addCourseTable('4','Pradyumna','30-01-2022','3',"view pdf")
+    // addCourseTable('1','Pradyumna','30-01-2022','1',"view pdf")
+    // addCourseTable('2','Pradyumna','30-01-2022','2',"view pdf")
+    // addCourseTable('3','Pradyumna','30-01-2022','2',"view pdf")
+    // addCourseTable('4','Pradyumna','30-01-2022','3',"view pdf")
   }
   maketable()
 </script>
