@@ -1,6 +1,6 @@
 # S.P.I.T Hackathon Team - The Inevitable
 # MedData
-Blockchain to secure Medical Records
+Problem statement no 9 - Blockchain to secure Medical Records
 
 ![Logo](logo.png)
 
