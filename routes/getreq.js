@@ -150,4 +150,6 @@ router.post('/patientdetails', (req, res) => {
         res.send("No user found");
     })
 })
+
+
 module.exports = router;

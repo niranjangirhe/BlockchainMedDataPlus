@@ -106,7 +106,46 @@ starCountRef.on('value', (snapshot) => {
     });
 });
 
+router.post('/getotp',(req,res)=>{
+    console.log(req.body);
+    const dbRef = firebase.database().ref();
+    var clientuser;
+    var mostViewedPosts = dbRef.child("user/Patients").orderByChild('email').equalTo(req.body.email);
+    mostViewedPosts.get().then((snapshot) => {
+        if (snapshot.exists()) {
+            for (let x in snapshot.val()) {
+                clientuser = x
+            }
+            console.log("client user:  " + clientuser)
+            var psuedodata=[];
+            dbRef.child("user/Patients").child(clientuser).get().then((snapshot) => {
+                var hashno = snapshot.val().report;
+                for(let i=0;i<hashno;i++)
+                {
+                    psuedodata.push(snapshot.val()["hash" + i.toString()]);
+                }
+                               
+                for(let i in psuedodata){
+                    for(let j in obj1.chain){
+                        if(obj1.chain[j].hash==psuedodata[i]){
+                            console.log(obj1.chain[j].data)
+                        }
+                    }
+                }
 
+                
+            }).catch((error) => {
+                console.error(error);
+            });
+
+
+        } else {
+            res.status(401).end('Patients not yet registered');
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+})
 
 
 router.get('/appendreport', (req, res) => {

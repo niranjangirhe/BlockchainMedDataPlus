@@ -136,19 +136,20 @@
 
     <!-- Edit Course -->
     <div id="edit">
+      <form action="/getotp" method="post">
       <div id="editdel">
         <h6>Enter Email-ID</h6>
         <div class="input-field col s6 center">
-          <input type="number" id="cedit">
+          <input type="email" name="email" id="cedit">
           <label for="cedit">Enter here</label>
           <a class="waves-effect waves-light btn blue darken-2" id="editcourse" onclick="opt()">Submit</a>
         </div>
         <p id="msg" style="display: none;color: red;">OTP has been sent</p>
         <div id="opt" style="display: none;">
         <div class="input-field col s6 center">
-          <input type="number" id="cdelete">
+          <input type="number" name="otp" id="cdelete">
           <label for="cdelete">Enter OTP</label>
-          <a class="waves-effect waves-light btn blue darken-2" id="" onclick="deletecourse()">Get Report</a>
+          <button type="submit" class="waves-effect waves-light btn blue darken-2" id="">Get Report</button>
         </div>
       </div>
         <!-- progress bar for all process -->
@@ -156,6 +157,7 @@
           <div class="indeterminate blue darken-2"></div>
         </div>
       </div>
+    </form>
     </div>
 
 
