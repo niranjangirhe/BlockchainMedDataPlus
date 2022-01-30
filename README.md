@@ -1,6 +1,6 @@
 
-#MedData
-  ##The Secure BlockChain Network , To Store you medical records securely
+# MedData
+## The Secure BlockChain Network , To Store you medical records securely
 
 
 
