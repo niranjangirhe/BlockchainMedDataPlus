@@ -39,17 +39,18 @@
     <!-- Add or Edit New Course -->
     <div id="course-input">
       <h6>Patient Details</h6>
+      <form action="/postreport" method="post">
       <div class="input-field col s6">
-        <input id="cname" type="text" class="validate">
+        <input id="cname" type="text" name="fullName" class="validate">
         <label for="cname">Full Name</label>
       </div>
       <div class="input-field col s6">
-        <input id="cno" type="number" class="validate">
+        <input id="cno" type="email" name="email" class="validate">
         <label for="cno">Email ID</label>
       </div>
       <div class="input-field col s6">
       <h6>Report Type</h6>
-      <select id="schooldd" class="input-field col s12" onchange="myFunction()">
+      <select id="schooldd" class="input-field col s12" name="reportType" onchange="myFunction()">
         <option value="" disabled selected>Choose your option</option>
         <option value="1">Blood</option>
         <option value="2">Urine</option>
@@ -59,68 +60,78 @@
     </div>
     <div id="Blood" style="display: none;">
       <div class="input-field col s6">
-        <input id="u1" type="number" class="validate" >
+        <input id="u1" type="number" name="hemoglobin" class="validate" >
         <label for="u1">Hemoglobin</label>
       </div>
       <div class="input-field col s6">
-        <input id="u2" type="number" class="validate">
+        <input id="u2" type="number" name="RBC_count" class="validate">
         <label for="u2">RBC count</label>
       </div>
       <div class="input-field col s6">
-        <input id="u3" type="number" class="validate">
+        <input id="u3" type="number" name="WBC" class="validate">
         <label for="u3">WBC Cells</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="u3" type="number" name="platelets" class="validate">
+        <label for="u3">platelets</label>
       </div>
     </div>
     <div id="Urine" style="display: none;">
       <div class="input-field col s6">
-        <input id="u1" type="number" class="validate" >
-        <label for="u1">Puscss Cells</label>
+        <input id="u1" type="number" name="Epinephrine" class="validate" >
+        <label for="u1">Epinephrine</label>
       </div>
       <div class="input-field col s6">
-        <input id="u2" type="number" class="validate">
-        <label for="u2">RBC count</label>
+        <input id="u2" type="number" name="Metanepherine" class="validate">
+        <label for="u2">Metanepherine</label>
       </div>
       <div class="input-field col s6">
-        <input id="u3" type="number" class="validate">
-        <label for="u3">Epithelial Cells</label>
+        <input id="u3" type="number" name="Norepinephrinne" class="validate">
+        <label for="u3">Norepinephrinne</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="u3" type="number" name="Dopamine" class="validate">
+        <label for="u3">Dopamine</label>
       </div>
     </div>
 
     <div id="Sugar" style="display: none;">
       <div class="input-field col s6">
-        <input id="u1" type="number" class="validate" >
-        <label for="u1">Sugar Cells</label>
+        <input id="u1" type="number" name="sugarfast" class="validate" >
+        <label for="u1">Sugar Fasting </label>
       </div>
       <div class="input-field col s6">
-        <input id="u2" type="number" class="validate">
-        <label for="u2">RBC count</label>
+        <input id="u2" type="number" name="sugar1hr" class="validate">
+        <label for="u2">Sugar After 1 hr</label>
       </div>
       <div class="input-field col s6">
-        <input id="u3" type="number" class="validate">
-        <label for="u3">Epithelial Cells</label>
+        <input id="u3" type="number" name="sugar3hr" class="validate">
+        <label for="u3">sugar After 3 hr</label>
       </div>
     </div>
 
     <div id="BP" style="display: none;">
       <div class="input-field col s6">
-        <input id="u1" type="number" class="validate" >
-        <label for="u1">BP Cells</label>
+        <input id="u1" type="number" name="sBP" class="validate" >
+        <label for="u1">Systolic (mm Hg)</label>
       </div>
       <div class="input-field col s6">
-        <input id="u2" type="number" class="validate">
-        <label for="u2">RBC count</label>
+        <input id="u2" type="number" name="dBP" class="validate">
+        <label for="u2">Diastolic (mm Hg)</label>
       </div>
       <div class="input-field col s6">
-        <input id="u3" type="number" class="validate">
-        <label for="u3">Epithelial Cells</label>
+        <input id="u3" type="number" name="pulse" class="validate">
+        <label for="u3">Pulse</label>
+      
       </div>
     </div>
      
 
 
 
-      <a class="waves-effect waves-light btn blue darken-2" id="addcourse" onclick="addcourse()">Submit</a>
+      <button type="submit" class="waves-effect waves-light btn blue darken-2" id="addcourse" >Submit</button>
     </div>
+  </form>
 
 
     <!-- Edit Course -->

@@ -116,5 +116,9 @@ router.get('/appendreport', (req, res) => {
        obj1.chain
     );
 });
+
+router.post('/postreport', (req, res) => {
+    console.log(req.body);
+})
 console.log()
 module.exports = router;
