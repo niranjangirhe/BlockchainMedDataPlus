@@ -39,7 +39,8 @@ app.get('/signup',(req,res)=>{
 })
 
 app.get('/addreport',(req,res)=>{
-    res.render('addreport')
+    data1=''
+    res.render('addreport',{data:data1})
 }) 
 
 app.get('/Doctordetail',(req,res)=>{
