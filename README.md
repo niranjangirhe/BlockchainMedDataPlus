@@ -18,6 +18,7 @@ proper authorization.
 
 ## Screenshots
 
+- Landinng Page
 ![App Screenshot](https://github.com/MedDataPlus/The-Inevitable/blob/c62349407ae7d29639be77ca0cc5fa2f3bd3e16e/WhatsApp%20Image%202022-01-30%20at%206.34.14%20AM.jpeg)
 
 ## Features
