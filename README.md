@@ -18,7 +18,7 @@ proper authorization.
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](WhatsApp Image 2022-01-30 at 6.34.14 AM.jpeg)
 
 ## Features
 
