@@ -44,7 +44,7 @@ class Blockchain {
     }
 
     createBlock() {
-        this.chain = [new Block(0, "01/01/2022", "Genisis", "0")];
+        this.chain = [new Block(0, Date.now(), "Genisis", "0")];
     }
     getLatestBlock() {
         return this.chain[this.chain.length - 1];
@@ -149,7 +149,8 @@ router.post('/getotp',(req,res)=>{
 
 router.get('/appendreport', (req, res) => {
     console.log("Adding block");
-    obj1.addBlock(new Block("01/01/2027", res.body))
+
+    obj1.addBlock(new Block(Date.now(), res.body))
     firebase.database().ref("user/bc").set(
         obj1.chain
     );
@@ -175,7 +176,7 @@ router.post('/postreport', (req, res) => {
                     //console.log("val : " + adder[x])
                 }
             }
-            obj1.addBlock(new Block("01/01/2027", adder))
+            obj1.addBlock(new Block(Date.now(), adder))
             firebase.database().ref("user/bc").set(
                 obj1.chain
             ).then(()=>{
